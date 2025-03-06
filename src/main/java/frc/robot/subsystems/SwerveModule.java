@@ -85,6 +85,10 @@ public class SwerveModule extends SubsystemBase {
     double ticks = 6.8833, diameter = 0.1016;
     driveController.setReference((distance*ticks)/(Math.PI*diameter), ControlType.kPosition);
   }
+
+  public double getModuleVelocity(){
+    return driveEncoder.getVelocity();
+  }
   public void diagonal(double y, double x){
     double hipotenusa = (Math.sqrt(Math.pow(x, 2) + Math.pow(y, 2)))*(x/Math.abs(x));
     desiredDistance(hipotenusa);

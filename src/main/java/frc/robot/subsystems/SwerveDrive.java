@@ -13,6 +13,7 @@ import com.studica.frc.AHRS.NavXComType;
 public class SwerveDrive extends SubsystemBase {
   /** Creates a new ExampleSubsystem. */
   private final AHRS navx;
+  private double distance;
 
   private final SwerveModule frontLeft;
   private final SwerveModule frontRight;
@@ -190,6 +191,9 @@ public class SwerveDrive extends SubsystemBase {
     frontRight.desiredDistance(distance);
     rearLeft.desiredDistance(distance);
     rearRight.desiredDistance(distance);
+  }
+  public boolean isStoped(){
+    return (frontLeft.getModuleVelocity() == 0 && frontRight.getModuleVelocity() == 0);
   }
   public void diagonalAngle(double y, double x){
     frontLeft.desiredAngle(frontLeft.getDiagonalAngle(y,x));
